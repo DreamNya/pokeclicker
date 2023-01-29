@@ -4,10 +4,8 @@ const { version } = require('./package.json');
 
 console.info('Starting publish..');
 
-ghpages.publish('docs', {
-    src: ['./**/*', '../package.json'],
+ghpages.publish('./docs', {
     branch: 'master',
-    dest: 'docs',
     message: `[v${version}] Live website`,
 }, (err) => {
     if (err) {
