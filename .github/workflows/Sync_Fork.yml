@@ -1,0 +1,20 @@
+name: Sync Fork
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: AbdulmelikKalkan/sync-fork-upstream@v1.3
+        env:
+          ACCESS_TOKEN: ${{ secrets.PAT }}
+        with:
+          owner: DreamNya
+          repo: pokeclicker
+          branch: develop
