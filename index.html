@@ -76,7 +76,6 @@
             position: relative;
         }
     </style>
-
 </head>
 <body class="no-select" data-bind="class: 'no-select ' + Settings.getSetting('theme').observableValue() + ' ' + Settings.getSetting('backgroundImage').observableValue(), attr : {'oncontextmenu' : 'return !' + Settings.getSetting('disableRightClickMenu').observableValue().toString() + ';'}">
 
@@ -19373,6 +19372,56 @@
     y="824"
     class="iconLocation"
     data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Ash Ketchum Kalos&#39;] &amp;&amp; TemporaryBattleList[&#39;Ash Ketchum Kalos&#39;].isVisible()
+    , attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`}">
+</image>
+
+	 
+	 
+
+<image href="assets/images/map/megamanectricoverworld.png" xlink:href="assets/images/map/megamanectricoverworld.png"
+    x="928"
+    y="224"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Wild Electrike Horde&#39;] &amp;&amp; TemporaryBattleList[&#39;Wild Electrike Horde&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Wild Electrike Horde"
+    x="928"
+    y="224"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Wild Electrike Horde&#39;] &amp;&amp; TemporaryBattleList[&#39;Wild Electrike Horde&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Wild Electrike Horde&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="936"
+    y="232"
+    class="iconLocation"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Wild Electrike Horde&#39;] &amp;&amp; TemporaryBattleList[&#39;Wild Electrike Horde&#39;].isVisible()
+    , attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`}">
+</image>
+
+	 
+	 
+
+<image href="assets/images/map/megahoundoomoverworld.png" xlink:href="assets/images/map/megahoundoomoverworld.png"
+    x="928"
+    y="224"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Wild Houndour Horde&#39;] &amp;&amp; TemporaryBattleList[&#39;Wild Houndour Horde&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Wild Houndour Horde"
+    x="928"
+    y="224"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Wild Houndour Horde&#39;] &amp;&amp; TemporaryBattleList[&#39;Wild Houndour Horde&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Wild Houndour Horde&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="936"
+    y="232"
+    class="iconLocation"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Wild Houndour Horde&#39;] &amp;&amp; TemporaryBattleList[&#39;Wild Houndour Horde&#39;].isVisible()
     , attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`}">
 </image>
 
@@ -39867,6 +39916,7 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
                                 <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('eggAnimation')}"></tr>
                                 <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('hideHatchery')}"></tr>
                                 <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('farmDisplay')}"></tr>
+                                <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('farmBoostDisplay')}"></tr>
                                 <tr data-bind="template: { name: 'MultipleChoiceSettingTemplate', data: Settings.getSetting('sizeUnits')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('hideQuestsOnFull')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('showCurrencyGainedAnimation')}"></tr>
@@ -44318,5 +44368,16 @@ aria-labelledby="dreamOrbsModalLabel">
 </div>
 
 
+
+<script type="text/javascript">
+// Check if we are running in an iframe
+if (self !== top) {
+    App = {};
+    Game = {};
+    document.body.innerHTML = `<div class="text-center">
+        <h2>Please visit the official website to play this game <a target="_top" href="https://pokeclicker.com">https://pokeclicker.com</a></h2>
+    </div>`;
+}
+</script>
 </body>
 </html>
