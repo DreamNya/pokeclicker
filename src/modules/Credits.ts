@@ -201,6 +201,8 @@ export const SpriteCredits: Credit[] = [
             'Arctozolt shop image',
             'Argus Steel',
             'Ash\'s Butterfree',
+            'Bill\'s Grandpa with Eevee',
+            'Bill\'s Grandpa without Eevee',
             'Black mane hair big icon',
             'Blimp base',
             'Butler',
@@ -518,6 +520,8 @@ export const SpriteCredits: Credit[] = [
         resources: [
             'Dynamic BG Meltan',
             'Dynamic BG Melmetal',
+            'Mega Houndoom (Overworld)',
+            'Mega Manectric (Overworld)',
         ],
         // Notes: Permission given on image page if credited.
     },
@@ -808,6 +812,15 @@ export const SpriteCredits: Credit[] = [
             'Officer Jenny',
         ],
         // Notes: Permission given on image page.
+    },
+    {
+        name: 'ZacWeavile',
+        link: 'https://www.smogon.com/forums/threads/zacweavile-galery.3712625/',
+        image: 'https://www.smogon.com/forums/media/data/avatars/o/522/522483.jpg?1650909371',
+        resources: [
+            'Dexio (Gen 6)',
+        ],
+        // Notes: Permission given if credited.
     },
     {
         name: 'Zender1752',
