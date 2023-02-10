@@ -42,7 +42,7 @@ config = Object.assign({
     FEATURE_FLAGS: {
         preloadUnreleasedTowns: false,
     },
-    TRANSLATIONS_URL: 'https://translations.pokeclicker.com',
+    TRANSLATIONS_URL: 'https://dreamnya.github.io/pokeclicker-translations/',
 }, config);
 
 const escapeRegExp = (string) => {
