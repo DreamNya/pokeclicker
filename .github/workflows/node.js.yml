@@ -33,3 +33,4 @@ jobs:
       with:
         branch: master
         folder: ./docs
+        clean-exclude: ./test
