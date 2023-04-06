@@ -1,17 +1,21 @@
-个人部署版游戏地址：https://dreamnya.github.io/pokeclicker/  
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/DreamNya/pokeclicker/node.js.yml?label=%E9%83%A8%E7%BD%B2%E7%8A%B6%E6%80%81)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/DreamNya/pokeclicker?label=%E6%B8%B8%E6%88%8F%E7%89%88%E6%9C%AC)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/DreamNya/pokeclicker?label=%E6%B8%B8%E6%88%8F%E7%89%88%E6%9C%AC)  
+官方测试版游戏地址：https://dreamnya.github.io/pokeclicker/  
+仅编译+汉化+制作Banner，未做其余任何改动，更新进度保持和源版本相同（使用了Action全自动更新，若自动部署失败可以在群里联系我）    
 
-仅编译+汉化，未做其余任何改动，更新进度保持和源版本相同  
- （使用了Action全自动更新，且开放所有人手动Sync fork权限，若自动部署失败可以在群里联系我）  
-
-源代码仓库：https://github.com/pokeclicker/pokeclicker  
+个人测试版游戏地址：https://dreamnya.github.io/pokeclicker/test  
+在官方测试版基础上整合了个人代码（所有代码已提交官方PR，在官方审核时会更新到个人测试版中）  
+可提前体验，手动更新，除非官方测试版更新新增内容外不会手动更新
+  
+   
+官方源代码仓库：https://github.com/pokeclicker/pokeclicker  
 
 汉化文件使用了锅巴汉化
 汉化发布页：https://gityx.com/g8hh/hanhuazhong/238.html  
   
 QQ交流群：595329229  
 
+个人Pokeclicker油猴脚本发布页：https://bbs.tampermonkey.net.cn/forum.php?mod=viewthread&tid=3842
 
 [![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/pokeclicker/pokeclicker/develop?label=dev%20version)](https://github.com/pokeclicker/pokeclicker/tree/develop)<br/>
 [![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/pokeclicker/pokeclicker/master?label=live%20version)](https://www.pokeclicker.com/)<br/>

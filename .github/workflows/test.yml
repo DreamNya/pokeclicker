@@ -29,4 +29,8 @@ jobs:
       with:
         branch: master
         folder: ./docs
+<<<<<<<< HEAD:.github/workflows/test.yml
         target-folder: ./test
+========
+        clean-exclude: ./test
+>>>>>>>> develop:.github/workflows/node.js.yml
