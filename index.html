@@ -735,12 +735,13 @@
 
 <script type="text/html" id="pokemonSpriteTemplate">
     <img class="enemy"
-        data-bind="attr:{ src: PokemonHelper.getImage($data.pokemon.id, $data.pokemon.shiny, $data.pokemon.gender == GameConstants.BattlePokemonGender.Female) }"
+        data-bind="attr:{ src: PokemonHelper.getImage($data.pokemon.id, $data.pokemon.shiny, $data.pokemon.gender == GameConstants.BattlePokemonGender.Female, $data.pokemon.shadow) }"
         src=""/>
 </script>
 
 <!-- Example usage -->
 <!-- <knockout data-bind="template: { name: 'pokemonSpriteTemplate', data: { 'pokemon': Battle.enemyPokemon() } }">Pokémon sprite</knockout> -->
+
 <script type="text/html" id="pokemonGenderTemplate">
     <!-- ko if: $data.pokemon.gender == GameConstants.BattlePokemonGender.Male -->
     <knockout data-bind="html: `<i class='gender-icon-male'>♂</i>`"></knockout>
@@ -42359,7 +42360,7 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
 aria-labelledby="pokedexModalLabel">
     <div class="modal-dialog modal-dialog-scrollable modal-xl pokedex-modal" role="document">
         <div class="modal-content">
-            
+
             <div class="modal-header p-lg-0 border-lg-0 position-relative">
                 <h4 class="d-lg-none d-block" style="margin-bottom: 0">Pokédex</h4>
                 <div class="row w-100 m-0 py-1 d-lg-flex d-none">
@@ -42384,7 +42385,7 @@ aria-labelledby="pokedexModalLabel">
                 </div>
                 <button type="button" class="btn btn-danger position-absolute" data-dismiss="modal" style="right:0; top:0; font-size: 18px; font-weight: 700;">×</button>
             </div>
-            
+
             <div class="modal-body pt-0 overflow-hidden" style="background-color: inherit;">
                 <div class="row">
                     <div class="col-12 d-lg-none d-block">
@@ -42488,7 +42489,7 @@ aria-labelledby="pokedexModalLabel">
                                     <!-- Mega Evolution -->
                                     <div class="form-group col-lg-12 col-12">
                                         <label for="pokedex-filter-unique-transformation">Unique Forms</label>
-                                        <select id="pokedex-filter-unique-transformation" autocomplete="off" class="custom-select" 
+                                        <select id="pokedex-filter-unique-transformation" autocomplete="off" class="custom-select"
                                             data-bind="options: PokedexFilters.uniqueTransformation.options,
                                                 optionsValue: 'value',
                                                 optionsText: 'text',
@@ -42501,9 +42502,9 @@ aria-labelledby="pokedexModalLabel">
                                     <div class="col-12">
                                         <div class="form-group my-2">
                                             <span>Rare Hold Item</span>
-                                            <span class="mx-1" 
-                                                data-bind="tooltip: { 
-                                                    title: 'Filters Pokémon with a chance to drop an item', 
+                                            <span class="mx-1"
+                                                data-bind="tooltip: {
+                                                    title: 'Filters Pokémon with a chance to drop an item',
                                                     trigger: 'hover',
                                                     boundary: 'window'
                                                 }" data-original-title="" title="">ⓘ</span>
@@ -42607,7 +42608,7 @@ aria-labelledby="pokedexModalLabel">
                                                     trigger: 'hover',
                                                     placement:'bottom'
                                                 }"></a>
-                                                
+
                                                 <!-- Category Button -->
                                                 <!-- ko if: App.game.party.alreadyCaughtPokemonByName($data.name) -->
                                                 <div class="pokemonCategory dropdown">
