@@ -1352,7 +1352,7 @@
         <!-- ko if: (DungeonRunner.fighting() || DungeonBattle.catching)  -->
         <div data-bind="if: DungeonBattle.enemyPokemon">
             <div class="trainer" data-bind="if: DungeonBattle.trainer()">
-                <img data-bind="attr:{ src: DungeonBattle.trainer().image }" onerror="this.src='assets/images/trainers/Mysterious Trainer.png';"/>
+                <img data-bind="attr:{ src: DungeonBattle.trainer().image }" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png';"/>
             </div>
             <div class="dungeon-enemy">
                 <div data-bind="ifnot: DungeonBattle.catching">
@@ -1490,7 +1490,7 @@
         </div>
 
         <div class="trainer">
-            <img data-bind="attr:{ src: GymBattle.gym.imagePath }" onerror="this.src='assets/images/trainers/Mysterious Trainer.png';"/>
+            <img data-bind="attr:{ src: GymBattle.gym.imagePath }" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png';"/>
         </div>
 
         <div class="trainer-enemy">
@@ -1569,7 +1569,7 @@
         </div>
 
         <div class="trainer" data-bind="if: !TemporaryBattleRunner.battleObservable().optionalArgs.hideTrainer">
-            <img data-bind="attr:{ src: TemporaryBattleRunner.battleObservable().getImage() }" onerror="this.src='assets/images/trainers/Mysterious Trainer.png';"/>
+            <img data-bind="attr:{ src: TemporaryBattleRunner.battleObservable().getImage() }" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png';"/>
         </div>
 
         <div class="trainer-enemy" data-bind="ifnot: TemporaryBattleBattle.catching">
@@ -1770,7 +1770,7 @@
           <li class="list-inline-item" data-bind="hidden: $data.hide">
             <img class="boss" src="assets/images/dungeons/chest.png" data-bind="hidden: !$data.mimic"/>
             <img class="dungeon-pokemon-preview" src="" data-bind="attr:{ src: $data.image },
-            css: { 'dungeon-pokemon-locked': $data.uncaught }" onerror="this.src='assets/images/trainers/Mysterious Trainer.png';"/>
+            css: { 'dungeon-pokemon-locked': $data.uncaught }" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png';"/>
             <sup class="shiny" data-bind="visible: $data.shiny">✨</sup>
             <img class="lock" src="assets/images/breeding/lock.svg" data-bind="
             hidden: !$data.lock,
@@ -1786,7 +1786,7 @@
           <li class="list-inline-item" data-bind="hidden: $data.hide">
             <img class="boss" src="assets/images/dungeons/boss.svg"/>
             <img class="dungeon-pokemon-preview" src="" data-bind="attr:{ src: $data.image },
-            css: { 'dungeon-pokemon-locked': $data.uncaught }" onerror="this.src='assets/images/trainers/Mysterious Trainer.png';"/>
+            css: { 'dungeon-pokemon-locked': $data.uncaught }" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png';"/>
             <sup class="shiny" data-bind="visible: $data.shiny">✨</sup>
             <img class="lock" src="assets/images/breeding/lock.svg" data-bind="hidden: !$data.lock,
             tooltip: {
@@ -39841,7 +39841,7 @@ aria-labelledby="receiveBadgeModalLabel" aria-hidden="true">
    <div class="modal-content">
        <div class="modal-header">
            <div style="width: 100%;">
-               <img src="" onerror="this.src='assets/images/trainers/Mysterious Trainer.png'"
+               <img src="" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png'"
                     data-bind="attr:{ src: 'assets/images/gymLeaders/' + GymRunner.gymObservable().leaderName + '.png'}">
                <h5 class="modal-title" id="receiveBadgeModalLabel"
                    data-bind="text: GymRunner.gymObservable().leaderName.replace(/\d/g,'')">Modal title</h5>
@@ -39882,7 +39882,7 @@ aria-labelledby="temporaryBattleWonModalLabel" aria-hidden="true">
     <!-- ko if: TemporaryBattleRunner.battleObservable()?.defeatMessage -->
        <div class="modal-header">
            <div style="width: 100%;">
-               <img src="" onerror="this.src='assets/images/trainers/Mysterious Trainer.png'"
+               <img src="" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png'"
                     data-bind="attr:{ src: TemporaryBattleRunner.battleObservable().getImage()}">
                <h5 class="modal-title" id="temporaryBattleWonModalLabel"
                    data-bind="text: TemporaryBattleRunner.battleObservable().getDisplayName()">Modal title</h5>
@@ -39910,7 +39910,7 @@ aria-labelledby="customQuestStepClearedModalLabel" aria-hidden="true">
     <!-- ko if: CustomQuest.questObservable()?.optionalArgs -->
        <div class="modal-header">
            <div style="width: 100%;">
-            <img src="" onerror="this.src='assets/images/trainers/Mysterious Trainer.png'"
+            <img src="" onerror="this.src='assets/images/npcs/specialNPCs/Mysterious Trainer.png'"
                 data-bind="attr:{ src: CustomQuest.questObservable().getNpcImage()}">
             <h5 class="modal-title" id="customQuestStepClearedModalLabel"
                 data-bind="text: CustomQuest.questObservable().getNpcDisplayName()">Modal title</h5>
