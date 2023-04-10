@@ -6,11 +6,14 @@ export default class DevelopmentRequirement extends AchievementRequirement {
 
     constructor() {
         super(1, GameConstants.AchievementOption.more);
+        /*
         // This was done like this so es/tslint doesn't throw errors
         try {
             this.development = !!JSON.parse('$DEVELOPMENT');
         // eslint-disable-next-line no-empty
         } catch (e) {}
+        */
+        this.development = true; //强制开发环境
     }
 
     // eslint-disable-next-line class-methods-use-this
