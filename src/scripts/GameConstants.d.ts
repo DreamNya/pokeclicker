@@ -307,6 +307,8 @@ namespace GameConstants {
         'Galarica_wreath',
         'Black_mane_hair',
         'White_mane_hair',
+        'Black_augurite',
+        'Peat_block',
     }
     declare enum FossilPieceType {
         'None',
@@ -434,7 +436,9 @@ namespace GameConstants {
         Hoppy,
         Galar,
         Armor,
-        Crown
+        Crown,
+        Hisui,
+        Arceus
     }
     declare const EnergyRestoreEffect: {
         SmallRestore: number;
@@ -474,6 +478,7 @@ namespace GameConstants {
     declare const UnovaGyms: string[];
     declare const KalosGyms: string[];
     declare const GalarGyms: string[];
+    declare const HisuiGyms: string[];
     declare const OrangeGyms: string[];
     declare const RegionGyms: string[][];
     declare function getGymIndex(gym: string): number;
@@ -553,6 +558,7 @@ namespace GameConstants {
         'Sunyshore City',
         'Survival Area',
         'Resort Area',
+        'Jubilife Village',
         'Castelia City',
         'Nimbasa City',
         'Driftveil City',
@@ -615,6 +621,7 @@ namespace GameConstants {
     }
     declare enum SinnohSubRegions {
         Sinnoh,
+        Hisui,
     }
     declare enum UnovaSubRegions {
         Unova,
@@ -696,7 +703,8 @@ namespace GameConstants {
         global,
         sevii,
         orre,
-        magikarpJump
+        magikarpJump,
+        hisui
     }
     declare const DayCycleStartHours: Record<DayCyclePart, number> = {
         [DayCyclePart.Dawn]: 5,
