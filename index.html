@@ -1057,6 +1057,8 @@
                             <div class="pokemonName">
                                 <span data-bind="text: displayName">Name</span>
                                 <sup data-bind="visible: App.game.party.alreadyCaughtPokemon($data.id, true)">✨</sup>
+                                <img class="shadow-icon" src="assets/images/status/shadow.svg" data-bind="visible: $data.shadow == GameConstants.ShadowStatus.Shadow"/>
+                                <img class="shadow-icon" src="assets/images/status/purified.svg" data-bind="visible: $data.shadow == GameConstants.ShadowStatus.Purified"/>
                                 <img width="20px" data-bind="visible: $data.megaStone,
                                     attr: {src: $data.megaStone?.getImage()},
                                     tooltip:  { title: $data.megaStone?.getTooltipText() ?? '', trigger: 'hover', placement:'bottom' }
@@ -45425,7 +45427,7 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                                             <!-- ko if: player.highestRegion() >= GameConstants.Region.kalos -->
                                             <div class="form-group col-lg-12 col-12">
                                                 <label for="breedingUniqueTransformationFilter">Unique Forms</label>
-                                                <select id="breedingUniqueTransformationFilter" autocomplete="off" class="custom-select" 
+                                                <select id="breedingUniqueTransformationFilter" autocomplete="off" class="custom-select"
                                                     data-bind="options: BreedingFilters.uniqueTransformation.options,
                                                         optionsValue: 'value',
                                                         optionsText: 'text',
@@ -45492,6 +45494,8 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                                         <li class="col-sm-4 col-md-3 col-lg-2 pokedexEntry" data-bind="visible: BreedingController.visible($data), style:{background: PokedexHelper.getBackgroundColors($data.name)}, class: App.game.breeding.hasFreeEggSlot() || App.game.breeding.hasFreeQueueSlot() ? '' : 'disabled'">
                                             <span class="pokedex-top-text" data-bind="text: $data.displayName">name</span>
                                             <div class="breedingListShiny" data-bind="visible: App.game.party.alreadyCaughtPokemon($data.id, true)">✨</div>
+                                            <img class="breeding-shadow-icon shadow-icon" src="assets/images/status/shadow.svg" data-bind="visible: $data.shadow == GameConstants.ShadowStatus.Shadow"/>
+                                            <img class="breeding-shadow-icon shadow-icon" src="assets/images/status/purified.svg" data-bind="visible: $data.shadow == GameConstants.ShadowStatus.Purified"/>
                                             <div class="breedingListPokerus" data-bind="if: App.game.party.getPokemon($data.id)?.pokerus">
                                                 <img width="32px" src="" data-bind="attr: { src: `assets/images/breeding/pokerus/${GameConstants.Pokerus[App.game.party.getPokemon($data.id).pokerus]}.png`}"/>
                                             </div>
@@ -45702,9 +45706,9 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
             </div>
             <div class="modal-footer d-lg-none d-flex">
                 <div class="mr-auto">
-                    <button type="button" class="btn btn-warning hatchery-warnings" 
+                    <button type="button" class="btn btn-warning hatchery-warnings"
                         data-bind="visible: !App.game.breeding.hasFreeEggSlot(),
-                        tooltip: { 
+                        tooltip: {
                             title: 'You don\'t have any free egg slots.',
                             trigger: 'hover',
                             placement: 'top',
@@ -45712,9 +45716,9 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                         }">
                         ⓘ
                     </button>
-                    <button type="button" class="btn btn-danger hatchery-warnings" 
+                    <button type="button" class="btn btn-danger hatchery-warnings"
                         data-bind="visible: !App.game.breeding.hasFreeQueueSlot() && App.game.breeding.queueSlots(),
-                        tooltip: { 
+                        tooltip: {
                             title: 'Your breeding queue is full or disabled.',
                             trigger: 'hover',
                             placement: 'top',
@@ -46308,6 +46312,9 @@ aria-labelledby="pokedexModalLabel">
                                             <div data-bind="if: App.game.party.getPokemon($data.id)?.megaStone" style="position: absolute;right: 1px;top: 4px;">
                                                 <img width="20px" data-bind="attr: { src: App.game.party.getPokemon($data.id).megaStone.getImage()}"/>
                                             </div>
+                                            <img style="position: absolute; top: 20px; right: 0px;" class="shadow-icon" src="assets/images/status/shadow.svg" data-bind="visible: App.game.party.getPokemon($data.id).shadow == GameConstants.ShadowStatus.Shadow"/>
+                                            <img style="position: absolute; top: 20px; right: 0px;" class="shadow-icon" src="assets/images/status/purified.svg" data-bind="visible: App.game.party.getPokemon($data.id).shadow == GameConstants.ShadowStatus.Purified"/>
+
                                             <!-- /ko -->
                                             <img src="" width="80px" data-bind="css: { 'pokemon-not-seen': !PokedexHelper.pokemonSeen($data.id)(), 'pokemon-seen-but-not-caught': !App.game.party.alreadyCaughtPokemonByName(name) && PokedexHelper.pokemonSeen($data.id)() }, attr:{ src: PokemonHelper.getImage($data.id, App.game.party.alreadyCaughtPokemon($data.id, true) && !PokedexHelper.hideShinyImages())}">
                                             <!-- ko if: PokedexHelper.pokemonSeen($data.id) -->
