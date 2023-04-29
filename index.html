@@ -44369,6 +44369,7 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
                                 <tr data-bind="template: { name: 'KeyChoiceSettingTemplate', data: Settings.getSetting('hotkey.farm')}"></tr>
                                 <tr data-bind="template: { name: 'KeyChoiceSettingTemplate', data: Settings.getSetting('hotkey.hatchery')}"></tr>
                                 <tr data-bind="template: { name: 'KeyChoiceSettingTemplate', data: Settings.getSetting('hotkey.underground')}"></tr>
+                                <tr data-bind="template: { name: 'KeyChoiceSettingTemplate', data: Settings.getSetting('hotkey.shop')}"></tr>
                                 <tr data-bind="template: { name: 'KeyChoiceSettingTemplate', data: Settings.getSetting('hotkey.oakItems')}"></tr>
                                 <tr data-bind="template: { name: 'KeyChoiceSettingTemplate', data: Settings.getSetting('hotkey.pokeballSelection')}"></tr>
                                 <tr data-bind="template: { name: 'KeyChoiceSettingTemplate', data: Settings.getSetting('hotkey.dailyQuests')}"></tr>
@@ -44607,7 +44608,7 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
                         </tbody></table>
                         <span>Options:<br/>
                             <code data-bind="foreach: DiscordRichPresence.outputOptions">
-                                <a href="#" data-bind="click: Settings.setSettingByName(DiscordRichPresence.focusedElement.name, DiscordRichPresence.focusedElement.value += ` {${$data.key}}`), text: `{${$data.key}}`"></a>
+                                <a href="#" data-bind="click: () => { if (DiscordRichPresence.focusedElement.name) { Settings.setSettingByName(DiscordRichPresence.focusedElement.name, DiscordRichPresence.focusedElement.value += ` {${$data.key}}`) }}, text: `{${$data.key}}`"></a>
                             </code>
                         </span>
                     </div>
@@ -47971,7 +47972,7 @@ aria-labelledby="badgeCaseModalLabel">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content" data-bind="let: { shopVisible: ko.observable(true) }">
             <div class="modal-header text-center">
-                <h4>Berry Master</h4>
+                <h4 data-bind="text: ShopHandler.shopObservable().displayName">Berry Master</h4>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">&times;</button>
             </div>
             <div>
