@@ -2,13 +2,9 @@
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/DreamNya/pokeclicker?label=%E6%B8%B8%E6%88%8F%E7%89%88%E6%9C%AC)  
 官方测试版游戏地址：https://dreamnya.github.io/pokeclicker/  
 仅编译+汉化+制作Banner，未做其余任何改动，更新进度保持和源版本相同（使用了Action全自动更新，若自动部署失败可以在群里联系我）    
-
-个人测试版游戏地址：https://dreamnya.github.io/pokeclicker/test  
-在官方测试版基础上整合了个人代码（所有代码已提交官方PR，在官方审核时会更新到个人测试版中）  
-可提前体验，手动更新，除非官方测试版更新新增内容外不会手动更新
-  
    
 官方源代码仓库：https://github.com/pokeclicker/pokeclicker  
+
 
 汉化文件使用了锅巴汉化
 汉化发布页：https://gityx.com/g8hh/hanhuazhong/238.html  
