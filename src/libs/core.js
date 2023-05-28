@@ -175,6 +175,7 @@ transTaskMgr = {
 function TransSubTextNode(node) {
     if (node.childNodes.length > 0) {
         for (let subnode of node.childNodes) {
+            if ($(subnode).parents("#dungeonPokemonList").length > 0) break;
             if (subnode.nodeName === "#text") {
                 let text = subnode.textContent;
                 let cnText = cnItem(text, subnode);
@@ -222,6 +223,7 @@ function TransSubTextNode(node) {
             } else if (mutation.addedNodes.length > 0) {
                 for (let node of mutation.addedNodes) {
                     if (node.nodeName === "#text") {
+                        if ($(node).parents("#dungeonPokemonList").length > 0) break;
                         node.textContent = cnItem(node.textContent, node);
                         //console.log(node);
                     } else if (node.nodeName !== "SCRIPT" && node.nodeName !== "STYLE" && node.nodeName !== "TEXTAREA") {
