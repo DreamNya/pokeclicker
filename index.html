@@ -17,10 +17,10 @@
     <script src="libs/Sortable.min.js"></script>
 
     <!-- New module-based code from './modules' -->
-    <script src="scripts/modules.min.js?v=0.10.13"></script>
+    <script src="scripts/modules.min.js?v=0.10.14"></script>
 
     <!--Minified scripts-->
-    <script src="scripts/script.min.js?v=0.10.13"></script>
+    <script src="scripts/script.min.js?v=0.10.14"></script>
 
     <!--Popper.js-->
     <script src="libs/popper.min.js"></script>
@@ -38,7 +38,7 @@
     <link href="libs/introjs-modern.css" rel="stylesheet">
 
     <!--Minified styles-->
-    <link href="styles/styles.min.css?v=0.10.13" rel="stylesheet">
+    <link href="styles/styles.min.css?v=0.10.14" rel="stylesheet">
 
     <!-- Google Analytics-->
     <style>
@@ -1117,7 +1117,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
         <tbody>
           <tbody data-bind="foreach: GameHelper.chunk(6, Object.keys(ItemList).filter(i=>ItemList[i].constructor.name == 'FluteItem'))">
             <tr data-bind="foreach: $data">
-                 <td class="p-0" data-bind="attr: {
+              <td class="p-0" data-bind="attr: {
                                 disabled: !player.itemList[$data]()
                             },
                             css: {
@@ -1138,8 +1138,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
                               html: true
                             }">
                 <img src="" class="clickable" data-bind="attr: { src: ItemList[$data].image }" width="26px">
-
-            </td>
+              </td>
             </tr>
             <tr data-bind="foreach: $data">
                 <td class="text-light p-0">
@@ -1155,6 +1154,59 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
                 </code>
               <!-- /ko -->
                 </td>
+            </tr>
+          </tbody>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-header p-0" data-toggle="collapse" href="#zCrystalItemContainerBody" data-bind="visible: App.game.zMoves.canAccess()">
+      <span>Z-Crystals</span>
+    </div>
+    <div id="zCrystalItemContainerBody" class="card-body p-0 show">
+      <p data-bind="visible: App.game.challenges.list.disableBattleItems.active() && App.game.zMoves.canAccess()" class="bg-danger my-0">
+        Z-Moves are disabled.
+      </p>
+      <table class="table table-bordered m-0" data-bind="visible: App.game.zMoves.canAccess()">
+        <tbody>
+          <tbody data-bind="visible : !App.game.zMoves.isActive(), foreach : GameHelper.chunk(6, GameConstants.zCrystalItemType)">
+            <tr data-bind="foreach : $data">
+              <td class="p-0" data-bind="attr: {
+                                          disabled: !ItemHandler.hasItem($data) || App.game.zMoves.isActive()
+                                        },
+                                        style: {
+                                          'opacity': ItemHandler.hasItem($data) && !App.game.zMoves.isActive() ? '1' : '0.1'
+                                        },
+                                        css: {
+                                          'bg-primary' : App.game.zMoves.isActive() && App.game.zMoves.type() === ItemList[$data].type,
+                                          'bg-secondary': !App.game.zMoves.isActive() || App.game.zMoves.type() !== ItemList[$data].type
+                                        },
+                                        event: {
+                                          click: function(){ItemHandler.useItem($data)}
+                                        },
+                                        tooltip: {
+                                          title: ItemList[$data].displayName + '<br/>' + ItemList[$data].getDescription(),
+                                          trigger: 'hover',
+                                          placement: $(window).innerWidth() < 768 ? 'bottom' : 'left',
+                                          html: true
+                                        }">
+                <img src="" class="clickable" data-bind="attr: { src: ItemList[$data].image }" width="26px">
+              </td>
+            </tr>
+          </tbody>
+          <tbody data-bind="visible: App.game.zMoves.isActive()">
+            <tr>
+              <td class="p-0 bg-primary" colspan="2" rowspan="3" data-bind="tooltip: { title: ItemList[GameConstants.zCrystalItemType[App.game.zMoves.type()]].displayName + '<br/>' + ItemList[GameConstants.zCrystalItemType[App.game.zMoves.type()]].getDescription(), trigger: 'hover', placement: 'bottom', html: true }">
+                <img src="" data-bind="attr: { src: ItemList[GameConstants.zCrystalItemType[App.game.zMoves.type()]].image,  }">
+              </td>
+              <td class="p-0 bg-secondary" colspan="4" rowspan="2">
+                <p class="mb-0" data-bind="text: `${App.game.zMoves.getMultiplier() < 1 ? '' : '+'}${(App.game.zMoves.getMultiplier() - 1) * 100}% Attack to all your ${PokemonType[App.game.zMoves.type()]}-type Pokémon`">bonus</p>
+              </td>
+            </tr>
+            <tr></tr>
+            <tr>
+              <td class="p-0" colspan="4" rowspan="1">
+                <code data-bind="text: `${App.game.zMoves.formattedTime()} left`">00:00 left</code>
+              </td>
             </tr>
           </tbody>
         </tbody>
@@ -1615,9 +1667,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
                   </knockout>
                 </td>
                 <td width="50%">
-                  <knockout data-bind="using: App.game.statistics.dungeonsCleared[GameConstants.getDungeonIndex(DungeonRunner.dungeon.name)]()"</knockout>
-                  <knockout data-bind="text: $data.toLocaleString('en-US')">0</knockout>
-                  &nbsp;Clears
+                  <knockout data-bind="text: `${App.game.statistics.dungeonsCleared[GameConstants.getDungeonIndex(DungeonRunner.dungeon.name)]().toLocaleString('en-US')} Clears`"></knockout>
                 </td>
               </tr>
               <tr>
@@ -1693,10 +1743,15 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
             Stop Auto
         </button>
         <h2 class="pageItemFooter" style="display: block; font-size: 1rem;">
-            <knockout>
-                <knockout data-bind="text: GymBattle.gym.leaderName.replace(/\d/g,'')"></knockout>
-            </knockout>
             <table width="100%">
+              <tr>
+                <td with="50%">
+                  <knockout data-bind="text: GymBattle.gym.leaderName.replace(/\d/g,'')"></knockout>
+                </td>
+                <td width="50%">
+                  <knockout data-bind="text: `${GymRunner.gymObservable().clears().toLocaleString('en-US')} Clears`"></knockout>
+                </td>
+              </tr>
               <tr>
                 <td width="50%">
                     <knockout data-bind="template: { name: 'pokemonAttackTemplate', data: { 'pokemon': Battle.enemyPokemon() } }"></knockout>
@@ -2157,8 +2212,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.kanto, 'Kanto').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/kanto-kanto.png?v=0.10.13',
-            href:'assets/images/kanto-kanto.png?v=0.10.13'
+            'xlink:href':'assets/images/kanto-kanto.png?v=0.10.14',
+            href:'assets/images/kanto-kanto.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -4567,8 +4622,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.kanto, 'Sevii Islands 123').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/kanto-sevii123.png?v=0.10.13',
-            href:'assets/images/kanto-sevii123.png?v=0.10.13'
+            'xlink:href':'assets/images/kanto-sevii123.png?v=0.10.14',
+            href:'assets/images/kanto-sevii123.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -5136,8 +5191,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.kanto, 'Sevii Islands 4567').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/kanto-sevii4567.png?v=0.10.13',
-            href:'assets/images/kanto-sevii4567.png?v=0.10.13'
+            'xlink:href':'assets/images/kanto-sevii4567.png?v=0.10.14',
+            href:'assets/images/kanto-sevii4567.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -6733,8 +6788,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
                             <g data-bind='visible: player.region == GameConstants.Region.johto'>
     <image width="1600" height="960" data-bind="attr: {
-        'xlink:href':'assets/images/johto.png?v=0.10.13',
-        href:'assets/images/johto.png?v=0.10.13'
+        'xlink:href':'assets/images/johto.png?v=0.10.14',
+        href:'assets/images/johto.png?v=0.10.14'
     }"></image>
 
     <!-- ------ -->
@@ -9092,8 +9147,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
                             <g data-bind='visible: player.region == GameConstants.Region.hoenn'>
     <image width="1600" height="960" data-bind="attr: {
-        'xlink:href':'assets/images/hoenn.png?v=0.10.13',
-        href:'assets/images/hoenn.png?v=0.10.13'
+        'xlink:href':'assets/images/hoenn.png?v=0.10.14',
+        href:'assets/images/hoenn.png?v=0.10.14'
     }"></image>
 
     <!-- ------ -->
@@ -12451,8 +12506,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
      <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.hoenn, 'Orre').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/orre.png?v=0.10.13',
-            href:'assets/images/orre.png?v=0.10.13'
+            'xlink:href':'assets/images/orre.png?v=0.10.14',
+            href:'assets/images/orre.png?v=0.10.14'
         }"></image>
 
     <!-- ------ -->
@@ -13098,8 +13153,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
                             <g data-bind='visible: player.region == GameConstants.Region.sinnoh'>
     <image width="1600" height="960" data-bind="attr: {
-        'xlink:href':'assets/images/sinnoh.png?v=0.10.13',
-        href:'assets/images/sinnoh.png?v=0.10.13'
+        'xlink:href':'assets/images/sinnoh.png?v=0.10.14',
+        href:'assets/images/sinnoh.png?v=0.10.14'
     }"></image>
 
     <!-- ------ -->
@@ -16116,8 +16171,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
                             <g data-bind='visible: player.region == GameConstants.Region.unova'>
     <image width="1600" height="960" data-bind="attr: {
-        'xlink:href':'assets/images/unova.png?v=0.10.13',
-        href:'assets/images/unova.png?v=0.10.13'
+        'xlink:href':'assets/images/unova.png?v=0.10.14',
+        href:'assets/images/unova.png?v=0.10.14'
     }"></image>
 
     <!-- ------ -->
@@ -19164,8 +19219,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
                             <g data-bind='visible: player.region == GameConstants.Region.kalos'>
     <image width="1600" height="960" data-bind="attr: {
-        'xlink:href':'assets/images/kalos.png?v=0.10.13',
-        href:'assets/images/kalos.png?v=0.10.13'
+        'xlink:href':'assets/images/kalos.png?v=0.10.14',
+        href:'assets/images/kalos.png?v=0.10.14'
     }"></image>
 
     <!-- ------ -->
@@ -21628,6 +21683,156 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
         playerSpriteMove">
 </image>
 
+     
+
+<image href="assets/images/map/Ring.png" xlink:href="assets/images/map/Ring.png"
+    x="1088"
+    y="704"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 1&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 1&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Hoopa Hoop"
+    x="1088"
+    y="704"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 1&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 1&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Hoopa 1&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="1104"
+    y="720"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Hoopa 1&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 1&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+     
+
+<image href="assets/images/map/Ring.png" xlink:href="assets/images/map/Ring.png"
+    x="128"
+    y="224"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 2&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 2&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Hoopa Hoop"
+    x="128"
+    y="224"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 2&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 2&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Hoopa 2&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="144"
+    y="240"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Hoopa 2&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 2&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+     
+
+<image href="assets/images/map/Ring.png" xlink:href="assets/images/map/Ring.png"
+    x="736"
+    y="272"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 3&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 3&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Hoopa Hoop"
+    x="736"
+    y="272"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 3&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 3&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Hoopa 3&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="752"
+    y="288"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Hoopa 3&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 3&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+     
+
+<image href="assets/images/map/Ring.png" xlink:href="assets/images/map/Ring.png"
+    x="1296"
+    y="272"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 4&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 4&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Hoopa Hoop"
+    x="1296"
+    y="272"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 4&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 4&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Hoopa 4&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="1312"
+    y="288"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Hoopa 4&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 4&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+     
+
+<image href="assets/images/map/Ring.png" xlink:href="assets/images/map/Ring.png"
+    x="736"
+    y="40"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 5&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 5&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Hoopa Hoop"
+    x="736"
+    y="40"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 5&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 5&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Hoopa 5&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="752"
+    y="56"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Hoopa 5&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 5&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+     
+
+<image href="assets/images/map/Ring.png" xlink:href="assets/images/map/Ring.png"
+    x="1088"
+    y="704"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 6&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 6&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Hoopa Hoop"
+    x="1088"
+    y="704"
+    height="80"
+    width="80"
+    data-bind="visible: TemporaryBattleList[&#39;Hoopa 6&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 6&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Hoopa 6&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="1104"
+    y="720"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Hoopa 6&#39;] &amp;&amp; TemporaryBattleList[&#39;Hoopa 6&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
 
 </g>
 
@@ -21635,8 +21840,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.alola, 'Melemele Island').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/alola-melemele.png?v=0.10.13',
-            href:'assets/images/alola-melemele.png?v=0.10.13'
+            'xlink:href':'assets/images/alola-melemele.png?v=0.10.14',
+            href:'assets/images/alola-melemele.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -24993,8 +25198,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.alola, 'Akala Island').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/alola-akala.png?v=0.10.13',
-            href:'assets/images/alola-akala.png?v=0.10.13'
+            'xlink:href':'assets/images/alola-akala.png?v=0.10.14',
+            href:'assets/images/alola-akala.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -27254,8 +27459,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.alola, 'Ula\'ula Island').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/alola-ulaula.png?v=0.10.13',
-            href:'assets/images/alola-ulaula.png?v=0.10.13'
+            'xlink:href':'assets/images/alola-ulaula.png?v=0.10.14',
+            href:'assets/images/alola-ulaula.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -29959,8 +30164,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.alola, 'Poni Island').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/alola-poni.png?v=0.10.13',
-            href:'assets/images/alola-poni.png?v=0.10.13'
+            'xlink:href':'assets/images/alola-poni.png?v=0.10.14',
+            href:'assets/images/alola-poni.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -32054,8 +32259,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.alola, 'Magikarp Jump').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/alola-magikarp-jump.png?v=0.10.13',
-            href:'assets/images/alola-magikarp-jump.png?v=0.10.13'
+            'xlink:href':'assets/images/alola-magikarp-jump.png?v=0.10.14',
+            href:'assets/images/alola-magikarp-jump.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -34153,8 +34358,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.galar, 'South Galar').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/galar-south.png?v=0.10.13',
-            href:'assets/images/galar-south.png?v=0.10.13'
+            'xlink:href':'assets/images/galar-south.png?v=0.10.14',
+            href:'assets/images/galar-south.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -36349,8 +36554,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     </g>
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.galar, 'North Galar').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/galar-north.png?v=0.10.13',
-            href:'assets/images/galar-north.png?v=0.10.13'
+            'xlink:href':'assets/images/galar-north.png?v=0.10.14',
+            href:'assets/images/galar-north.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -37436,8 +37641,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     </g>
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.galar, 'Isle of Armor').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/galar-isle-of-armor.png?v=0.10.13',
-            href:'assets/images/galar-isle-of-armor.png?v=0.10.13'
+            'xlink:href':'assets/images/galar-isle-of-armor.png?v=0.10.14',
+            href:'assets/images/galar-isle-of-armor.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -40084,8 +40289,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     </g>
     <g data-bind="visible: player.subregion == SubRegions.getSubRegion(GameConstants.Region.galar, 'Crown Tundra').id">
         <image width="1600" height="960" data-bind="attr: {
-            'xlink:href':'assets/images/galar-crown-tundra.png?v=0.10.13',
-            href:'assets/images/galar-crown-tundra.png?v=0.10.13'
+            'xlink:href':'assets/images/galar-crown-tundra.png?v=0.10.14',
+            href:'assets/images/galar-crown-tundra.png?v=0.10.14'
         }"></image>
 
         <!-- ------ -->
@@ -41826,8 +42031,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
                             <g data-bind='visible: player.region == GameConstants.Region.hisui'>
     <image width="1600" height="960" data-bind="attr: {
-        'xlink:href':'assets/images/hsiui.png?v=0.10.13',
-        href:'assets/images/hisui.png?v=0.10.13'
+        'xlink:href':'assets/images/hsiui.png?v=0.10.14',
+        href:'assets/images/hisui.png?v=0.10.14'
     }"></image>
 
     <!-- ------ -->
