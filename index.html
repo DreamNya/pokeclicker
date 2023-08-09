@@ -55087,9 +55087,12 @@ aria-labelledby="hallOfFameModalLabel" aria-hidden="true">
                    You can now travel on to <span data-bind="text: GameConstants.camelCaseToString(GameConstants.Region[player.highestRegion() + 1])"></span>!<br/>
                    <br/>
                    <strong>There are a few things you should know before you depart:</strong><br/>
-                   You will gain <strong data-bind="text: App.game.breeding.queueSlotsGainedFromRegion(player.highestRegion())"></strong> queue slots in the Hatchery.<br/>
+                   You will gain <strong data-bind="text: App.game.breeding.queueSlotsGainedFromRegion(player.highestRegion())"></strong> queue slots in the Hatchery.<br/><br/>
                    <!-- ko if: App.game.challenges.list.regionalAttackDebuff.active() -->
-                   When Pokémon are in a Region they're not native to, they will only retain <strong data-bind="text: App.game.party.getRegionAttackMultiplier(player.highestRegion() + 1).toLocaleString(undefined,{style: 'percent'})"></strong> of their total attack.<br/>
+                   When Pokémon are in a Region they're not native to, they will only retain <strong data-bind="text: App.game.party.getRegionAttackMultiplier(player.highestRegion() + 1).toLocaleString(undefined,{style: 'percent'})"></strong> of their total attack.<br/><br/>
+                   <!-- /ko -->
+                   <!-- ko if: player.highestRegion() - 2 >= GameConstants.Region.kanto -->
+                   Dungeons in the <strong data-bind="text: GameConstants.camelCaseToString(GameConstants.Region[player.highestRegion() - 2])"></strong> Region will be significantly less likely to drop Epic, Legendary, and Mythic loot.<br /><br/>
                    <!-- /ko -->
                    You will also have to progress to the Dock in <span data-bind="text: GameConstants.camelCaseToString(GameConstants.Region[player.highestRegion() + 1])"></span> before you are able to travel between regions again.
                </p>
@@ -57879,7 +57882,7 @@ aria-labelledby="badgeCaseModalLabel">
                 </div>
                 <div id="berryMasterTrade" class="tab-pane fade">
                     <div class="table-responsive" id="dailyDealsBody">
-                        <table class="table table-sm table-hover table-striped m-0 text-left">
+                        <table class="table table-sm table-striped m-0 text-left">
                             <thead>
                                 <tr>
                                     <th class="text-center">Inv</th>
@@ -57894,12 +57897,12 @@ aria-labelledby="badgeCaseModalLabel">
                             <tbody data-bind='foreach: BerryDeal.getDeals(ShopHandler.shopObservable().location)'>
                                 <!-- ko foreach: berries -->
                                 <tr>
-                                    <td data-bind="text: App.game.farming.berryList[$data.berryType]().toLocaleString('en-US')"></td>
-                                    <td><img height="28px" data-bind="attr: {src: FarmController.getBerryImage($data.berryType) }, css: {'berryLocked': !App.game.farming.unlockedBerries[$data.berryType]() }"></img></td>
-                                    <td data-bind="text: amount.toLocaleString('en-US') + ' x ' + (App.game.farming.unlockedBerries[$data.berryType]() ? BerryType[$data.berryType] : '???')"></td>
+                                    <td class="align-middle" data-bind="text: App.game.farming.berryList[$data.berryType]().toLocaleString('en-US')"></td>
+                                    <td class="align-middle"><img height="28px" data-bind="attr: {src: FarmController.getBerryImage($data.berryType) }, css: {'berryLocked': !App.game.farming.unlockedBerries[$data.berryType]() }"></img></td>
+                                    <td class="align-middle" data-bind="text: amount.toLocaleString('en-US') + ' x ' + (App.game.farming.unlockedBerries[$data.berryType]() ? BerryType[$data.berryType] : '???')"></td>
                                     <!-- ko if: $index() === 0 -->
-                                    <td class='vertical-middle' data-bind="attr: { rowspan: $parent.berries.length }">→</td>
-                                    <td class='vertical-middle' data-bind="attr: { rowspan: $parent.berries.length }">
+                                    <td class="align-middle" data-bind="attr: { rowspan: $parent.berries.length }">→</td>
+                                    <td class="align-middle" data-bind="attr: { rowspan: $parent.berries.length }">
                                         <img class='mineInventoryItem' data-bind="
                                             attr: {src: $parent.item.itemType.image},
                                             tooltip: {
@@ -57909,7 +57912,7 @@ aria-labelledby="badgeCaseModalLabel">
                                                 html: true
                                               }">
                                     </td>
-                                    <td class='vertical-middle' data-bind='attr: { rowspan: $parent.berries.length }'>
+                                    <td class="align-middle" data-bind='attr: { rowspan: $parent.berries.length }'>
                                         <span data-bind='text: $parent.item.amount + " × " + $parent.item.itemType.displayName'></span>
                                         <span style="float: right; margin-right: 5px">
                                             <knockout data-bind="if: ($parent.item.itemType instanceof CaughtIndicatingItem)">
@@ -57924,7 +57927,7 @@ aria-labelledby="badgeCaseModalLabel">
                                             </knockout>
                                         </span>
                                     </td>
-                                    <td class='vertical-middle' data-bind="attr: { rowspan: $parent.berries.length }">
+                                    <td class="align-middle" data-bind="attr: { rowspan: $parent.berries.length }">
                                         <div class="btn-group btn-block" data-bind="let: { tradeAmount: ko.observable(1) }">
                                             <button class='btn btn-success btn-block' data-bind='click: function(){BerryDeal.use(ShopHandler.shopObservable()?.location, $parentContext.$index(), tradeAmount())}, css: { disabled: !BerryDeal.canUse(ShopHandler.shopObservable()?.location, $parentContext.$index()) }'>
                                                 Trade
