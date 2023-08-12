@@ -2071,6 +2071,12 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
             }">
           </li>
           <!-- /ko -->
+          <!-- ko if: player.town().dungeon.allAvailableShadowPokemon().some(p => App.game.party.getPokemonByName(p)?.shadow < GameConstants.ShadowStatus.Shadow) -->
+          <li class="list-inline-item">
+            <img class="boss" src="assets/images/status/shadow.svg"/>
+            <img class="dungeon-pokemon-preview dungeon-pokemon-locked" src="assets/images/npcs/specialNPCs/Mysterious Trainer.png"/>
+          </li>
+          <!-- /ko -->
         </ul>
       </div>
     </knockout>
@@ -13313,6 +13319,64 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
 
 
+        <!--Orre Colosseum-->
+        
+
+<rect class="city"
+    data-town="Orre Colosseum"
+    x="320"
+    y="576"
+    height="80"
+    width="112"
+    data-bind="
+        click:function(){MapHelper.moveToTown('Orre Colosseum')},
+        attr: { class: MapHelper.calculateTownCssClass('Orre Colosseum') },
+        ">
+</rect>
+
+    <image width="48" height="48"
+        x="352"
+        y="592"
+        class="iconLocation hide"
+        data-bind="visible: MapHelper.isTownCurrentLocation('Orre Colosseum'),
+            attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+            playerSpriteMove">
+    </image>
+
+
+
+        <!--Orre Colosseum extension-->
+        
+
+<rect class="city"
+    data-town="Orre Colosseum"
+    x="336"
+    y="656"
+    height="32"
+    width="80"
+    data-bind="
+        click:function(){MapHelper.moveToTown('Orre Colosseum')},
+        attr: { class: MapHelper.calculateTownCssClass('Orre Colosseum') },
+        ">
+</rect>
+
+
+
+        <!--Orre Colosseum extension-->
+        
+
+<rect class="city"
+    data-town="Orre Colosseum"
+    x="352"
+    y="544"
+    height="32"
+    width="80"
+    data-bind="
+        click:function(){MapHelper.moveToTown('Orre Colosseum')},
+        attr: { class: MapHelper.calculateTownCssClass('Orre Colosseum') },
+        ">
+</rect>
+
 
 
         <!-- -------- -->
@@ -13643,66 +13707,6 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
             playerSpriteMove">
     </image>
-
-
-
-        <!--Orre Colosseum-->
-        
-
-
-    <rect class="city"
-        data-town="Orre Colosseum"
-        x="320"
-        y="576"
-        height="80"
-        width="112"
-        data-bind="click:function(){MapHelper.moveToTown('Orre Colosseum')},
-            attr: { class: MapHelper.calculateTownCssClass('Orre Colosseum') }">
-    </rect>
-
-
-    <image width="48" height="48"
-        x="352"
-        y="592"
-        class="iconLocation hide"
-        data-bind="visible: MapHelper.isTownCurrentLocation('Orre Colosseum'),
-            attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
-            playerSpriteMove">
-    </image>
-
-
-
-        <!--Orre Colosseum extension-->
-        
-
-
-    <rect class="city"
-        data-town="Orre Colosseum"
-        x="336"
-        y="656"
-        height="32"
-        width="80"
-        data-bind="click:function(){MapHelper.moveToTown('Orre Colosseum')},
-            attr: { class: MapHelper.calculateTownCssClass('Orre Colosseum') }">
-    </rect>
-
-
-
-
-        <!--Orre Colosseum extension-->
-        
-
-
-    <rect class="city"
-        data-town="Orre Colosseum"
-        x="352"
-        y="544"
-        height="32"
-        width="80"
-        data-bind="click:function(){MapHelper.moveToTown('Orre Colosseum')},
-            attr: { class: MapHelper.calculateTownCssClass('Orre Colosseum') }">
-    </rect>
-
 
 
 
@@ -37485,6 +37489,84 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     y="576"
     class="iconLocation hide"
     data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Galarian Zapdos 3&#39;] &amp;&amp; TemporaryBattleList[&#39;Galarian Zapdos 3&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+
+            
+
+<image href="assets/images/map/Raid.png" xlink:href="assets/images/map/Raid.png"
+    x="416"
+    y="464"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Max Raid 1&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 1&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Max Raid"
+    x="416"
+    y="464"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Max Raid 1&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 1&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Max Raid 1&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="424"
+    y="472"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Max Raid 1&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 1&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+
+            
+
+<image href="assets/images/map/Raid.png" xlink:href="assets/images/map/Raid.png"
+    x="1056"
+    y="288"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Max Raid 2&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 2&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Max Raid"
+    x="1056"
+    y="288"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Max Raid 2&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 2&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Max Raid 2&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="1064"
+    y="296"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Max Raid 2&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 2&#39;].isVisible(),
+        attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+        playerSpriteMove">
+</image>
+
+
+            
+
+<image href="assets/images/map/Raid.png" xlink:href="assets/images/map/Raid.png"
+    x="896"
+    y="800"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Max Raid 3&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 3&#39;].isVisible()"/>
+<rect class="city"
+    data-town="Max Raid"
+    x="896"
+    y="800"
+    height="64"
+    width="64"
+    data-bind="visible: TemporaryBattleList[&#39;Max Raid 3&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 3&#39;].isVisible(), click: () =&gt; TemporaryBattleList[&#39;Max Raid 3&#39;].protectedOnclick()">
+</rect>
+<image width="48" height="48"
+    x="904"
+    y="808"
+    class="iconLocation hide"
+    data-bind="visible: MapHelper.isTownCurrentLocation('') && TemporaryBattleList[&#39;Max Raid 3&#39;] &amp;&amp; TemporaryBattleList[&#39;Max Raid 3&#39;].isVisible(),
         attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
         playerSpriteMove">
 </image>
