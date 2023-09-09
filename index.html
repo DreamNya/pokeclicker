@@ -1580,7 +1580,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
             </knockout>
 
             <knockout class="left">
-                <!-- ko if: DungeonBattle.trainer() && !DungeonBattle.trainer().options?.hideTrainer -->
+                <!-- ko if: DungeonBattle.trainer() -->
                 <knockout data-bind="text: DungeonBattle.trainer().name">Trainer name</knockout>
                 <!-- /ko -->
             </knockout>
@@ -58044,7 +58044,7 @@ aria-labelledby="badgeCaseModalLabel">
                                                 trigger: 'hover',
                                                 placement: 'top',
                                                 html: true
-                                            }, enable: $data.isPausable()">Pause</button>
+                                            }, css: { disabled: !$data.isPausable() }">Pause</button>
                                         </td>
                                     </tr>
                                 </tbody>
