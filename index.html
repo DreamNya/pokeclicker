@@ -10182,7 +10182,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     <rect data-route='115'
         data-bind="attr: { class: MapHelper.calculateRouteCssClass(115, 2) }"
         height="48"
-        width="32"
+        width="16"
         x="16" y="160">
     </rect>
 
@@ -11168,6 +11168,21 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
 </g>
 
+    
+
+<g
+
+    data-bind="click:function(){ MapHelper.moveToRoute(134, 2); } ">
+    <rect data-route='134'
+        data-bind="attr: { class: MapHelper.calculateRouteCssClass(134, 2) }"
+        height="16"
+        width="48"
+        x="624" y="640">
+    </rect>
+
+
+</g>
+
 
     <!-- ----- -->
     <!-- TOWNS -->
@@ -11405,8 +11420,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 <rect class="city"
     data-town="Mt. Chimney"
     x="336"
-    y="176"
-    height="80"
+    y="160"
+    height="96"
     width="128"
     data-bind="
         click:function(){MapHelper.moveToTown('Mt. Chimney')},
@@ -11416,7 +11431,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <image width="48" height="48"
         x="376"
-        y="192"
+        y="184"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Mt. Chimney'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
@@ -11958,7 +11973,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
         data-town="Granite Cave"
         x="64"
         y="864"
-        height="64"
+        height="48"
         width="64"
         data-bind="click:function(){MapHelper.moveToTown('Granite Cave')},
             attr: { class: MapHelper.calculateTownCssClass('Granite Cave') }">
@@ -11967,12 +11982,57 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <image width="48" height="48"
         x="72"
-        y="872"
+        y="864"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Granite Cave'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
             playerSpriteMove">
     </image>
+
+
+    
+
+
+    <rect class="city"
+        data-town="Granite Cave"
+        x="48"
+        y="880"
+        height="64"
+        width="16"
+        data-bind="click:function(){MapHelper.moveToTown('Granite Cave')},
+            attr: { class: MapHelper.calculateTownCssClass('Granite Cave') }">
+    </rect>
+
+
+
+    
+
+
+    <rect class="city"
+        data-town="Granite Cave"
+        x="64"
+        y="912"
+        height="16"
+        width="32"
+        data-bind="click:function(){MapHelper.moveToTown('Granite Cave')},
+            attr: { class: MapHelper.calculateTownCssClass('Granite Cave') }">
+    </rect>
+
+
+
+    
+
+
+    <rect class="city"
+        data-town="Granite Cave"
+        x="64"
+        y="928"
+        height="16"
+        width="16"
+        data-bind="click:function(){MapHelper.moveToTown('Granite Cave')},
+            attr: { class: MapHelper.calculateTownCssClass('Granite Cave') }">
+    </rect>
+
 
 
 
@@ -11983,7 +12043,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <image width="48" height="48"
         x="376"
-        y="192"
+        y="184"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Fiery Path'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
@@ -11999,7 +12059,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <image width="48" height="48"
         x="376"
-        y="192"
+        y="184"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Mt. Chimney Crater'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
@@ -12015,7 +12075,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <image width="48" height="48"
         x="376"
-        y="192"
+        y="184"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Jagged Pass'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
@@ -12031,7 +12091,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <image width="48" height="48"
         x="376"
-        y="192"
+        y="184"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Magma Hideout'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
@@ -12065,6 +12125,21 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     </image>
 
 
+    
+
+
+    <rect class="city"
+        data-town="New Mauville"
+        x="528"
+        y="480"
+        height="16"
+        width="48"
+        data-bind="click:function(){MapHelper.moveToTown('New Mauville')},
+            attr: { class: MapHelper.calculateTownCssClass('New Mauville') }">
+    </rect>
+
+
+
 
     <!--Meteor Falls-->
     
@@ -12072,23 +12147,38 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <rect class="city"
         data-town="Meteor Falls"
-        x="48"
-        y="160"
-        height="48"
-        width="64"
+        x="32"
+        y="112"
+        height="96"
+        width="80"
         data-bind="click:function(){MapHelper.moveToTown('Meteor Falls')},
             attr: { class: MapHelper.calculateTownCssClass('Meteor Falls') }">
     </rect>
 
 
     <image width="48" height="48"
-        x="56"
-        y="160"
+        x="48"
+        y="136"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Meteor Falls'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
             playerSpriteMove">
     </image>
+
+
+    
+
+
+    <rect class="city"
+        data-town="Meteor Falls"
+        x="48"
+        y="96"
+        height="16"
+        width="64"
+        data-bind="click:function(){MapHelper.moveToTown('Meteor Falls')},
+            attr: { class: MapHelper.calculateTownCssClass('Meteor Falls') }">
+    </rect>
+
 
 
 
@@ -12125,8 +12215,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     <rect class="city"
         data-town="Mt. Pyre"
         x="928"
-        y="288"
-        height="64"
+        y="272"
+        height="80"
         width="64"
         data-bind="click:function(){MapHelper.moveToTown('Mt. Pyre')},
             attr: { class: MapHelper.calculateTownCssClass('Mt. Pyre') }">
@@ -12135,7 +12225,7 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <image width="48" height="48"
         x="936"
-        y="296"
+        y="288"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Mt. Pyre'),
             attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
@@ -12150,8 +12240,8 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
     <rect class="city"
         data-town="Mt. Pyre"
         x="992"
-        y="304"
-        height="48"
+        y="288"
+        height="64"
         width="16"
         data-bind="click:function(){MapHelper.moveToTown('Mt. Pyre')},
             attr: { class: MapHelper.calculateTownCssClass('Mt. Pyre') }">
@@ -12191,10 +12281,10 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <rect class="city"
         data-town="Aqua Hideout"
-        x="1168"
+        x="1152"
         y="176"
         height="32"
-        width="16"
+        width="32"
         data-bind="click:function(){MapHelper.moveToTown('Aqua Hideout')},
             attr: { class: MapHelper.calculateTownCssClass('Aqua Hideout') }">
     </rect>
@@ -12315,14 +12405,14 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
         x="1472"
         y="560"
         height="64"
-        width="112"
+        width="128"
         data-bind="click:function(){MapHelper.moveToTown('Victory Road Hoenn')},
             attr: { class: MapHelper.calculateTownCssClass('Victory Road Hoenn') }">
     </rect>
 
 
     <image width="48" height="48"
-        x="1504"
+        x="1512"
         y="568"
         class="iconLocation hide"
         data-bind="visible: MapHelper.isTownCurrentLocation('Victory Road Hoenn'),
@@ -12337,10 +12427,25 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
     <rect class="city"
         data-town="Victory Road Hoenn"
-        x="1520"
+        x="1488"
         y="544"
         height="16"
-        width="48"
+        width="96"
+        data-bind="click:function(){MapHelper.moveToTown('Victory Road Hoenn')},
+            attr: { class: MapHelper.calculateTownCssClass('Victory Road Hoenn') }">
+    </rect>
+
+
+
+    
+
+
+    <rect class="city"
+        data-town="Victory Road Hoenn"
+        x="1472"
+        y="624"
+        height="16"
+        width="96"
         data-bind="click:function(){MapHelper.moveToTown('Victory Road Hoenn')},
             attr: { class: MapHelper.calculateTownCssClass('Victory Road Hoenn') }">
     </rect>
