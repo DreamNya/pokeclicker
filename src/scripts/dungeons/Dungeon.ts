@@ -77,6 +77,7 @@ interface EncounterInfo {
 }
 
 // Gain a gym badge after first completion of a dungeon
+// Used for trials pre 10.16, could be useful for something else?
 const DungeonGainGymBadge = (gym: Gym) => {
     // Check that the player hasn't already obtained the badge
     if (!App.game.badgeCase.hasBadge(gym.badgeReward)) {
@@ -6330,8 +6331,7 @@ dungeonList['Valley Windworks'] = new Dungeon('Valley Windworks',
     {
         common: [
             {loot: 'Lucky_incense'},
-            {loot: 'Pokeball'},
-            {loot: 'Greatball'},
+            {loot: 'Ultraball'},
         ],
         rare: [{loot: 'Yellow Shard'}],
         epic: [{loot: 'Zap Plate'}],
@@ -6576,7 +6576,6 @@ dungeonList['Wayward Cave'] = new Dungeon('Wayward Cave',
         ],
         legendary: [
             {loot: 'Revive', weight: 2},
-            {loot: 'SmallRestore', weight: 2},
             {loot: 'MediumRestore'},
         ],
     },
@@ -6708,12 +6707,11 @@ dungeonList['Iron Island'] = new Dungeon('Iron Island',
     {
         common: [
             {loot: 'Dowsing_machine', weight: 2},
-            {loot: 'Pokeball'},
+            {loot: 'Ultraball'},
         ],
         rare: [{loot: 'Grey Shard'}],
         epic: [
             {loot: 'Iron Plate', weight: 2},
-            {loot: 'Revive'},
             {loot: 'Duskball'},
         ],
         legendary: [
@@ -6869,7 +6867,7 @@ dungeonList['Mt. Coronet North'] = new Dungeon('Mt. Coronet North',
     {
         common: [
             {loot: 'xClick', weight: 2},
-            {loot: 'Greatball'},
+            {loot: 'Ultraball'},
         ],
         rare: [
             {loot: 'Yellow Shard'},
@@ -6880,7 +6878,6 @@ dungeonList['Mt. Coronet North'] = new Dungeon('Mt. Coronet North',
             {loot: 'Draco Plate'},
         ],
         legendary: [
-            {loot: 'Light Clay', weight: 2},
             {loot: 'LargeRestore', weight: 2},
             {loot: 'Star Piece'},
             {loot: 'Soft_Sand'},
@@ -7552,7 +7549,6 @@ dungeonList['Stark Mountain'] = new Dungeon('Stark Mountain',
         legendary: [
             {loot: 'Metal_Powder'},
             {loot: 'Star Piece', weight: 2},
-            {loot: 'LargeRestore'},
             {loot: 'Charcoal'},
         ],
         mythic: [{loot: 'Max Revive'}],
@@ -7594,7 +7590,7 @@ dungeonList['Floccesy Ranch'] = new Dungeon('Floccesy Ranch',
     {
         common: [
             {loot: 'xAttack'},
-            {loot: 'Pokeball'},
+            {loot: 'Ultraball'},
             {loot: 'Cheri'},
         ],
         rare: [
@@ -7616,7 +7612,7 @@ dungeonList['Liberty Garden'] = new Dungeon('Liberty Garden',
         common: [
             {loot: 'Token_collector'},
             {loot: 'Figy', weight: 2},
-            {loot: 'Greatball'},
+            {loot: 'Ultraball'},
         ],
         rare: [
             {loot: 'Red Shard'},
@@ -7682,8 +7678,6 @@ dungeonList['Castelia Sewers'] = new Dungeon('Castelia Sewers',
             {loot: 'Mind Plate'},
         ],
         legendary: [
-            {loot: 'MediumRestore', weight: 2},
-            {loot: 'SmallRestore'},
             {loot: 'Revive'},
             {loot: 'Rare Bone'},
             {loot: 'LargeRestore'},
@@ -7786,7 +7780,7 @@ dungeonList['Relic Castle'] = new Dungeon('Relic Castle',
         common: [
             {loot: 'Token_collector'},
             {loot: 'Mago', weight: 2},
-            {loot: 'Greatball'},
+            {loot: 'Ultraball'},
         ],
         rare: [
             {loot: 'Red Shard'},
@@ -7800,8 +7794,8 @@ dungeonList['Relic Castle'] = new Dungeon('Relic Castle',
         ],
         legendary: [
             {loot: 'Revive'},
-            {loot: 'MediumRestore', weight: 2},
-            {loot: 'LargeRestore'},
+            {loot: 'Smooth Rock'},
+            {loot: 'LargeRestore', weight: 2},
         ],
         mythic: [
             {loot: 'Heart Scale'},
@@ -7998,7 +7992,7 @@ dungeonList['Mistralton Cave'] = new Dungeon('Mistralton Cave',
     {
         common: [
             {loot: 'xClick', weight: 2},
-            {loot: 'Greatball'},
+            {loot: 'Ultraball'},
         ],
         rare: [
             {loot: 'Grey Shard'},
@@ -8010,8 +8004,6 @@ dungeonList['Mistralton Cave'] = new Dungeon('Mistralton Cave',
             {loot: 'Iron Plate'},
         ],
         legendary: [
-            {loot: 'Revive'},
-            {loot: 'Hard Stone'},
             {loot: 'Duskball'},
             {loot: 'LargeRestore'},
         ],
@@ -8069,7 +8061,6 @@ dungeonList['Celestial Tower'] = new Dungeon('Celestial Tower',
             {loot: 'Mind Plate'},
         ],
         legendary: [
-            {loot: 'Revive', weight: 2},
             {loot: 'LargeRestore'},
             {loot: 'Twisted_Spoon'},
         ],
@@ -8179,7 +8170,6 @@ dungeonList['Reversal Mountain'] = new Dungeon('Reversal Mountain',
             {loot: 'Flame Plate'},
         ],
         legendary: [
-            {loot: 'Revive', weight: 2},
             {loot: 'LargeRestore'},
             {loot: 'Metal_Powder'},
             {loot: 'Star Piece'},
@@ -8329,7 +8319,7 @@ dungeonList['Plasma Frigate'] = new Dungeon('Plasma Frigate',
     {
         common: [
             {loot: 'xAttack'},
-            {loot: 'Pokeball'},
+            {loot: 'Ultraball'},
         ],
         rare: [
             {loot: 'Red Shard'},
@@ -8839,12 +8829,11 @@ dungeonList['Twist Mountain'] = new Dungeon('Twist Mountain',
         common: [
             {loot: 'Token_collector', weight: 3},
             {loot: 'Lucky_incense', weight: 3},
-            {loot: 'Greatball'},
+            {loot: 'Ultraball'},
         ],
         rare: [{loot: 'White Shard'}],
         legendary: [
             {loot: 'Rare Bone', weight: 2},
-            {loot: 'Revive'},
             {loot: 'Duskball'},
             {loot: 'LargeRestore'},
         ],
@@ -8949,7 +8938,7 @@ dungeonList['Moor of Icirrus'] = new Dungeon('Moor of Icirrus',
         common: [
             {loot: 'xAttack', weight: 3},
             {loot: 'Lucky_egg', weight: 3},
-            {loot: 'Greatball'},
+            {loot: 'Ultraball'},
         ],
         rare: [
             {loot: 'Red Shard'},
@@ -9183,7 +9172,6 @@ dungeonList['Pinwheel Forest'] = new Dungeon('Pinwheel Forest',
             {loot: 'Fist Plate'},
         ],
         legendary: [
-            {loot: 'MediumRestore', weight: 2},
             {loot: 'Star Piece', weight: 2},
             {loot: 'LargeRestore'},
             {loot: 'Nestball'},
@@ -9250,7 +9238,7 @@ dungeonList.Dreamyard = new Dungeon('Dreamyard',
     {
         common: [
             {loot: 'xClick'},
-            {loot: 'Pokeball'},
+            {loot: 'Ultraball'},
         ],
         rare: [
             {loot: 'Red Shard'},
@@ -9262,7 +9250,6 @@ dungeonList.Dreamyard = new Dungeon('Dreamyard',
             {loot: 'Draco Plate'},
         ],
         legendary: [
-            {loot: 'SmallRestore', weight: 2},
             {loot: 'Revive', weight: 2},
             {loot: 'LargeRestore'},
         ],
@@ -9415,7 +9402,6 @@ dungeonList['Connecting Cave'] = new Dungeon('Connecting Cave',
             {loot: 'Sky Plate'},
         ],
         legendary: [
-            {loot: 'Hard Stone'},
             {loot: 'Damp Rock'},
             {loot: 'Silk_Scarf'},
         ],
@@ -9657,7 +9643,6 @@ dungeonList['Sea Spirit\'s Den'] = new Dungeon('Sea Spirit\'s Den',
             {loot: 'Lureball'},
         ],
         legendary: [
-            {loot: 'Hard Stone'},
             {loot: 'Damp Rock'},
             {loot: 'Mystic_Water'},
         ],
@@ -9919,8 +9904,8 @@ dungeonList['Frost Cavern'] = new Dungeon('Frost Cavern',
             {loot: 'Duskball'},
         ],
         legendary: [
-            {loot: 'MediumRestore', weight: 2},
-            {loot: 'LargeRestore'},
+            {loot: 'LargeRestore', weight: 2},
+            {loot: 'Star Piece'},
             {loot: 'Never_Melt_Ice'},
             {loot: 'Abomasite', ignoreDebuff: true},
         ],
@@ -10128,10 +10113,10 @@ dungeonList['Terminus Cave'] = new Dungeon('Terminus Cave',
             {loot: 'Iron Plate'},
             {loot: 'Earth Plate'},
             {loot: 'Draco Plate'},
+            {loot: 'Duskball'},
         ],
         legendary: [
             {loot: 'Star Piece', weight: 2},
-            {loot: 'Duskball'},
             {loot: 'Heat Rock'},
             {loot: 'LargeRestore'},
         ],
@@ -10304,12 +10289,13 @@ dungeonList['Victory Road Kalos'] = new Dungeon('Victory Road Kalos',
             {loot: 'Black Shard'},
             {loot: 'White Shard'},
             {loot: 'Pink Shard'},
+            {loot: 'Duskball'},
         ],
         legendary: [
             {loot: 'Star Piece', weight: 2},
             {loot: 'Smooth Rock'},
             {loot: 'Revive'},
-            {loot: 'Duskball'},
+            {loot: 'Odd Keystone'},
             {loot: 'Rock_Incense'},
             {loot: 'Damp Rock'},
             {loot: 'LargeRestore'},
@@ -10456,11 +10442,10 @@ dungeonList['Verdant Cavern'] = new Dungeon('Verdant Cavern',
     [
         new DungeonBossPokemon('Alolan Raticate', 57978365, 12),
         new DungeonBossPokemon('Gumshoos', 57978365, 12),
-        new DungeonBossPokemon('Totem Raticate', 82543791, 70, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
-        new DungeonBossPokemon('Totem Gumshoos', 82543791, 70, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Raticate', 82543791, 70, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
+        new DungeonBossPokemon('Totem Gumshoos', 82543791, 70, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
     ],
-    805000, 2,
-    () => DungeonGainGymBadge(GymList['Ilima\'s Trial']));
+    805000, 2);
 
 dungeonList['Melemele Meadow'] = new Dungeon('Melemele Meadow',
     [
@@ -10508,7 +10493,6 @@ dungeonList['Seaward Cave'] = new Dungeon('Seaward Cave',
             {loot: 'Diveball'},
         ],
         legendary: [
-            {loot: 'MediumRestore'},
             {loot: 'Star Piece'},
             {loot: 'Never_Melt_Ice'},
         ],
@@ -10541,7 +10525,6 @@ dungeonList['Ten Carat Hill'] = new Dungeon('Ten Carat Hill',
         rare: [{loot: 'Cyan Shard'}],
         epic: [{loot: 'MediumRestore'}],
         legendary: [
-            {loot: 'Hard Stone'},
             {loot: 'Star Piece'},
             {loot: 'Sharp_Beak'},
         ],
@@ -10577,7 +10560,7 @@ dungeonList['Pikachu Valley'] = new Dungeon('Pikachu Valley',
         new DungeonBossPokemon('Pikachu (Sinnoh Cap)', 59764020, 15),
         new DungeonBossPokemon('Pikachu (Unova Cap)', 59764020, 15),
         new DungeonBossPokemon('Pikachu (Kalos Cap)', 59764020, 15),
-        new DungeonBossPokemon('Pikachu (Alola Cap)', 59764020, 15, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Pikachu (Alola Cap)', 59764020, 15, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
         new DungeonBossPokemon('Pikachu (World Cap)', 59764020, 15, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_GalarChampion)}),
     ],
     850000, 4);
@@ -10670,22 +10653,17 @@ dungeonList['Brooklet Hill'] = new Dungeon('Brooklet Hill',
             {loot: 'Splash Plate'},
             {loot: 'Diveball'},
         ],
-        legendary: [
-            {loot: 'LargeRestore'},
-            {loot: 'Revive'},
-            {loot: 'Mystic_Water'},
-        ],
+        legendary: [{loot: 'Mystic_Water'}],
         mythic: [{loot: 'Heart Scale'}],
     },
     12138060,
     [
         new DungeonBossPokemon('Wishiwashi (School)', 60690300, 20),
         new DungeonBossPokemon('Araquanid', 60690300, 20),
-        new DungeonBossPokemon('Totem Wishiwashi', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
-        new DungeonBossPokemon('Totem Araquanid', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Wishiwashi', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
+        new DungeonBossPokemon('Totem Araquanid', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
     ],
-    875000, 5,
-    () => DungeonGainGymBadge(GymList['Lana\'s Trial']));
+    875000, 5);
 
 dungeonList['Wela Volcano Park'] = new Dungeon('Wela Volcano Park',
     [
@@ -10719,20 +10697,16 @@ dungeonList['Wela Volcano Park'] = new Dungeon('Wela Volcano Park',
             {loot: 'Flame Plate'},
             {loot: 'Quickball'},
         ],
-        legendary: [
-            {loot: 'LargeRestore'},
-            {loot: 'Charcoal'},
-        ],
+        legendary: [{loot: 'Charcoal'}],
     },
     12896392,
     [
         new DungeonBossPokemon('Alolan Marowak', 64481960, 22),
         new DungeonBossPokemon('Salazzle', 64481960, 22),
-        new DungeonBossPokemon('Totem Marowak', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
-        new DungeonBossPokemon('Totem Salazzle', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Marowak', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
+        new DungeonBossPokemon('Totem Salazzle', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
     ],
-    900000, 7,
-    () => DungeonGainGymBadge(GymList['Kiawe\'s Trial']));
+    900000, 7);
 
 dungeonList['Lush Jungle'] = new Dungeon('Lush Jungle',
     [
@@ -10772,10 +10746,9 @@ dungeonList['Lush Jungle'] = new Dungeon('Lush Jungle',
     13090332,
     [
         new DungeonBossPokemon('Lurantis', 65451660, 24),
-        new DungeonBossPokemon('Totem Lurantis', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Lurantis', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
     ],
-    925000, 8,
-    () => DungeonGainGymBadge(GymList['Mallow\'s Trial']));
+    925000, 8);
 
 dungeonList['Diglett\'s Tunnel'] = new Dungeon('Diglett\'s Tunnel',
     [
@@ -10809,10 +10782,7 @@ dungeonList['Diglett\'s Tunnel'] = new Dungeon('Diglett\'s Tunnel',
             {loot: 'Earth Plate'},
             {loot: 'Duskball'},
         ],
-        legendary: [
-            {loot: 'LargeRestore'},
-            {loot: 'Soft_Sand'},
-        ],
+        legendary: [{loot: 'Soft_Sand'}],
         mythic: [{loot: 'Max Revive'}],
     },
     13215839,
@@ -10853,10 +10823,7 @@ dungeonList['Memorial Hill'] = new Dungeon('Memorial Hill',
             {loot: 'Spooky Plate'},
             {loot: 'Duskball'},
         ],
-        legendary: [
-            {loot: 'LargeRestore'},
-            {loot: 'Spell_Tag'},
-        ],
+        legendary: [{loot: 'Spell_Tag'}],
     },
     13286024,
     [
@@ -10942,11 +10909,10 @@ dungeonList['Hokulani Observatory'] = new Dungeon('Hokulani Observatory',
     [
         new DungeonBossPokemon('Vikavolt', 69418380, 29),
         new DungeonBossPokemon('Togedemaru', 69418380, 33),
-        new DungeonBossPokemon('Totem Vikavolt', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
-        new DungeonBossPokemon('Totem Togedemaru', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Vikavolt', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
+        new DungeonBossPokemon('Totem Togedemaru', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
     ],
-    1000000, 22,
-    () => DungeonGainGymBadge(GymList['Sophocles\' Trial']));
+    1000000, 22);
 
 dungeonList['Thrifty Megamart'] = new Dungeon('Thrifty Megamart',
     ['Golbat', 'Gastly', 'Haunter', 'Gengar', 'Shuppet', 'Banette', 'Jellicent', 'Klefki'],
@@ -10965,7 +10931,7 @@ dungeonList['Thrifty Megamart'] = new Dungeon('Thrifty Megamart',
     14705422,
     [
         new DungeonBossPokemon('Mimikyu', 73527110, 35),
-        new DungeonBossPokemon('Totem Mimikyu', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Mimikyu', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
         new DungeonBossPokemon('Vivillon (Poké Ball)',  96662023, 60, {
             hide: true,
             requirement: new MultiRequirement([
@@ -10973,8 +10939,7 @@ dungeonList['Thrifty Megamart'] = new Dungeon('Thrifty Megamart',
                 new SpecialEventRequirement('Lunar New Year'),
             ])}),
     ],
-    1025000, 14,
-    () => DungeonGainGymBadge(GymList['Acerola\'s Trial']));
+    1025000, 14);
 
 dungeonList['Ula\'ula Meadow'] = new Dungeon('Ula\'ula Meadow',
     [
@@ -11097,7 +11062,6 @@ dungeonList['Po Town'] = new Dungeon('Po Town',
             {loot: 'Dread Plate'},
         ],
         legendary: [
-            {loot: 'LargeRestore'},
             {loot: 'Max Revive'},
             {loot: 'Poison_Barb'},
         ],
@@ -11202,12 +11166,10 @@ dungeonList['Aether Foundation'] = new Dungeon('Aether Foundation',
             {loot: 'Cyan Shard'},
         ],
         epic: [
-            {loot: 'Revive'},
             {loot: 'Iron Ball'},
             {loot: 'Mind Plate'},
         ],
         legendary: [
-            {loot: 'LargeRestore'},
             {loot: 'Max Revive'},
             {loot: 'Protein', requirement: new ClearDungeonRequirement(200, GameConstants.getDungeonIndex('Aether Foundation'))},
         ],
@@ -11361,10 +11323,9 @@ dungeonList['Vast Poni Canyon'] = new Dungeon('Vast Poni Canyon',
     15992044,
     [
         new DungeonBossPokemon('Kommo-o', 79960220, 49),
-        new DungeonBossPokemon('Totem Kommo-o', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Kommo-o', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
     ],
-    1125000, 25,
-    () => DungeonGainGymBadge(GymList['Vast Poni Canyon Trial']));
+    1125000, 25);
 
 dungeonList['Mina\'s Houseboat'] = new Dungeon('Mina\'s Houseboat',
     ['Chansey', 'Wingull', 'Pelipper', 'Spritzee', 'Swirlix', 'Cutiefly', 'Comfey', 'Dhelmise'],
@@ -11384,10 +11345,9 @@ dungeonList['Mina\'s Houseboat'] = new Dungeon('Mina\'s Houseboat',
     16217412,
     [
         new DungeonBossPokemon('Ribombee', 81087060, 55),
-        new DungeonBossPokemon('Totem Ribombee', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Elite_AlolaChampion)}),
+        new DungeonBossPokemon('Totem Ribombee', 82543791, 60, {hide: true, requirement: new GymBadgeRequirement(BadgeEnums.Champion_Stamp)}),
     ],
-    1150000, 25,
-    () => DungeonGainGymBadge(GymList['Mina\'s Trial']));
+    1150000, 25);
 
 dungeonList['Mount Lanakila'] = new Dungeon('Mount Lanakila',
     [
@@ -11564,8 +11524,8 @@ dungeonList['Ruins of Life'] = new Dungeon('Ruins of Life',
             {loot: 'Stone Plate'},
             {loot: 'Mind Plate'},
             {loot: 'Pixie Plate'},
-            {loot: 'Twisted_Spoon'},
         ],
+        legendary: [{loot: 'Twisted_Spoon'}],
     },
     16435490,
     [
@@ -11703,10 +11663,7 @@ dungeonList['Resolution Cave'] = new Dungeon('Resolution Cave',
             {loot: 'Dread Plate'},
             {loot: 'Draco Plate'},
         ],
-        legendary: [
-            {loot: 'Star Piece'},
-            {loot: 'Dragon_Fang'},
-        ],
+        legendary: [{loot: 'Dragon_Fang'}],
     },
     17114462,
     [
@@ -11737,10 +11694,7 @@ dungeonList['Slumbering Weald Shrine'] = new Dungeon('Slumbering Weald Shrine',
             {loot: 'Fist Plate'},
             {loot: 'Iron Plate'},
         ],
-        legendary: [
-            {loot: 'LargeRestore'},
-            {loot: 'Silver_Powder'},
-        ],
+        legendary: [{loot: 'Silver_Powder'}],
     },
     27009504,
     [
@@ -11779,7 +11733,7 @@ dungeonList['Galar Mine'] = new Dungeon('Galar Mine',
     ],
     {
         common: [
-            {loot: 'Greatball', weight: 5},
+            {loot: 'Ultraball', weight: 5},
             {loot: 'MediumRestore', weight: 1},
             {loot: 'Carkol', weight: 0.5},
             {loot: 'Woobat', weight: 0.5},
@@ -11788,11 +11742,7 @@ dungeonList['Galar Mine'] = new Dungeon('Galar Mine',
             {loot: 'Crimson Shard'},
             {loot: 'Brown Shard'},
         ],
-        legendary: [
-            {loot: 'Revive'},
-            {loot: 'Star Piece'},
-            {loot: 'Rock_Incense'},
-        ],
+        legendary: [{loot: 'Rock_Incense'}],
     },
     20767840,
     [new DungeonBossPokemon('Carkol', 103839200, 18)],
@@ -12020,7 +11970,6 @@ dungeonList['Dusty Bowl'] = new Dungeon('Dusty Bowl',
             {loot: 'Rare Bone'},
         ],
         legendary: [
-            {loot: 'Max Revive'},
             {loot: 'Star Piece'},
             {loot: 'Soft_Sand'},
         ],
@@ -12049,7 +11998,6 @@ dungeonList['Warm-Up Tunnel'] = new Dungeon('Warm-Up Tunnel',
         ],
         epic: [{loot: 'Quickball'}],
         legendary: [
-            {loot: 'Revive'},
             {loot: 'Max Revive'},
             {loot: 'Black_Belt'},
         ],
@@ -12231,11 +12179,9 @@ dungeonList['Roaring-Sea Caves'] = new Dungeon('Roaring-Sea Caves',
         ],
         epic: [
             {loot: 'Duskball'},
-            {loot: 'MediumRestore'},
             {loot: 'LargeRestore'},
         ],
         legendary: [
-            {loot: 'Revive'},
             {loot: 'Max Revive'},
             {loot: 'Hard Stone'},
             {loot: 'Star Piece'},
@@ -12423,7 +12369,6 @@ dungeonList['Tunnel to the Top'] = new Dungeon('Tunnel to the Top',
             {loot: 'Duskball'},
             {loot: 'Quickball'},
             {loot: 'Flame Plate'},
-            {loot: 'LargeRestore'},
         ],
         legendary: [
             {loot: 'Hard Stone'},
@@ -12431,7 +12376,6 @@ dungeonList['Tunnel to the Top'] = new Dungeon('Tunnel to the Top',
             {loot: 'Icy Rock'},
             {loot: 'Everstone'},
             {loot: 'Rare Bone'},
-            {loot: 'Revive'},
             {loot: 'Star Piece'},
             {loot: 'Max Revive'},
         ],
