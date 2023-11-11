@@ -128,6 +128,12 @@ gulp.task('browserSync', () => {
         server: {
             baseDir: dests.base,
         },
+        middleware: [
+            function (req, res, next) {
+                res.setHeader('Cache-Control', `public, max-age=${req.url.endsWith('.js') ? 3600 : 86400}`);
+                next();
+            },
+        ],
         ghostMode: false,
     });
     gulp.watch(srcs.html, gulp.series('compile-html'));
