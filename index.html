@@ -16357,6 +16357,32 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
 
 
 
+    <!--Great Marsh-->
+    
+
+<rect class="city"
+    data-town="Great Marsh"
+    x="928"
+    y="720"
+    height="80"
+    width="96"
+    data-bind="
+        click:function(){MapHelper.moveToTown('Great Marsh')},
+        attr: { class: MapHelper.calculateTownCssClass('Great Marsh') },
+        ">
+</rect>
+
+    <image width="48" height="48"
+        x="952"
+        y="736"
+        class="iconLocation hide"
+        data-bind="visible: MapHelper.isTownCurrentLocation('Great Marsh'),
+            attr: {href:`assets/images/profile/trainer-${App.game.profile.trainer() || 0}.png`},
+            playerSpriteMove">
+    </image>
+
+
+
     <!--Sunyshore City-->
     
 
@@ -55777,6 +55803,8 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
             <p><strong>If I evolve a shiny Pokémon, will the evolution be shiny?</strong><br/>
             <span class="text-muted">No, you will need to obtain the evolution's shiny via a different method.</span></p>
             <p><h5 class="text-primary"><strong>Items:</strong></h5></p>
+            <p><strong>How do I evolve Pokémon that require an item to evolve?</strong><br/>
+            <span class="text-muted">You can use evolution items by clicking <strong>Items</strong> in the Start Menu.</span></p>
             <p><strong>What is the small/medium/large restore used for?</strong><br/>
             <span class="text-muted">They can be used in the underground to restore some stamina.</span></p>
             <p><strong>What are berries used for?</strong><br/>
