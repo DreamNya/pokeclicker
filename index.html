@@ -55303,6 +55303,7 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('confirmBeformeMulchingAllPlots')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('disableRightClickMenu')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('catchFilters.initialEnabled')}"></tr>
+                                <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('catchFilters.invertPriorityOrder')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('breedingEfficiencyAllModifiers')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('useWebWorkerForGameTicks')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('disableOfflineProgress')}"></tr>
@@ -56725,7 +56726,7 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                                                         data-bind="text: BreedingFilters.category.value() == -1 ? 'All' : PokemonCategories.categories().find(c => c.id == BreedingFilters.category.value()).name()">
                                                         Categories
                                                     </button>
-                                                    <div class="border-secondary dropdown-menu col-12">
+                                                    <div class="border-secondary dropdown-menu col-12 category-dropdown">
                                                         <div class="dropdown-item dropdown-text" data-bind="click : function(){ BreedingFilters.category.value(-1); Settings.setSettingByName('breedingCategoryFilter', -1) }">
                                                             All
                                                         </div>
@@ -56859,7 +56860,7 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                                             <!-- Category Button -->
                                             <div class="pokemonCategory dropdown">
                                                 <button data-toggle="dropdown" data-bind="class: `category-${App.game.party.getPokemon($data.id).category + 1}`"></button>
-                                                <div class="border-secondary dropdown-menu">
+                                                <div class="border-secondary dropdown-menu category-dropdown">
                                                     <!-- ko foreach: { data: PokemonCategories.categories, as: 'pokemonCategory' } -->
                                                     <a class="dropdown-item category" href="#" data-bind="text: pokemonCategory.name, style: { color: GameHelper.isColorLight($data.color()) ? 'black' : 'white', background: pokemonCategory.color, 'text-shadow': `0 0 6px ${GameHelper.isColorLight($data.color()) ? 'white' : 'black'}` }, click: () => { App.game.party.getPokemon($parent.id).category = pokemonCategory.id }">Category</a>
                                                     <!-- /ko -->
@@ -57609,7 +57610,7 @@ aria-labelledby="pokedexModalLabel">
                                                 data-bind="text: PokedexFilters.category.value() == -1 ? 'All' : PokemonCategories.categories().find(c => c.id == PokedexFilters.category.value()).name()">
                                                 Categories
                                             </button>
-                                            <div class="border-secondary dropdown-menu col-12">
+                                            <div class="border-secondary dropdown-menu col-12 category-dropdown">
                                                 <div class="dropdown-item dropdown-text" data-bind="click : function(){ Settings.setSettingByName('pokedexCategoryFilter', -1) }">
                                                     All
                                                 </div>
@@ -57791,7 +57792,7 @@ aria-labelledby="pokedexModalLabel">
                                                 <!-- ko if: App.game.party.alreadyCaughtPokemonByName($data.name) -->
                                                 <div class="pokemonCategory dropdown">
                                                     <button data-toggle="dropdown" data-bind="class: `category-${App.game.party.getPokemon($data.id).category + 1}`"></button>
-                                                    <div class="border-secondary dropdown-menu">
+                                                    <div class="border-secondary dropdown-menu category-dropdown">
                                                         <!-- ko foreach: { data: PokemonCategories.categories, as: 'pokemonCategory' } -->
                                                         <a class="dropdown-item category" href="#" data-bind="text: pokemonCategory.name, style: { color: GameHelper.isColorLight($data.color()) ? 'black' : 'white', background: pokemonCategory.color, 'text-shadow': `0 0 6px ${GameHelper.isColorLight($data.color()) ? 'white' : 'black'}` }, click: () => { App.game.party.getPokemon($parent.id).category = pokemonCategory.id }">Category</a>
                                                         <!-- /ko -->
@@ -60380,6 +60381,11 @@ aria-labelledby="badgeCaseModalLabel">
                                 Reset Filters
                             </button>
                         </div>
+                        <p class="mb-1 small">
+                            ** Filters closer to the
+                            <strong class="text-warning" data-bind="text: Settings.getSetting('catchFilters.invertPriorityOrder').observableValue() ? 'bottom' : 'top'">top</strong>
+                            have a higher priority! **
+                        </p>
                         <div id="pokeballFilterConfigs"
                             data-bind="sortable: {
                                 foreach: App.game.pokeballFilters.list,
