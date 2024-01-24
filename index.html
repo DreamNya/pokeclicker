@@ -54463,11 +54463,9 @@ selectAllClick - (Optional) Function called when the Select All button is clicke
                 text: App.game.breeding.queueList().length + ' / ' + App.game.breeding.usableQueueSlots(),
                 tooltip: { title: BreedingController.queueSizeLimit() > -1 ? 'Queue is currently limited by your Queue Size setting.' : '', trigger: 'hover' }
             "></span>
-        <button class="btn btn-sm btn-danger" style="position: absolute; right: 0; width: auto;"
-                data-bind="
-                    click: () => App.game.breeding.clearQueue(true),
-                    tooltip: { title: 'Remove all Pokémon from the queue.', trigger: 'hover' }
-                ">
+        <button class="btn btn-sm btn-danger" style="position: absolute; right: 0; width: auto;" data-bind="
+            click: () => App.game.breeding.clearQueue(Settings.getSetting('breedingQueueClearConfirmation').observableValue()),
+            tooltip: { title: 'Remove all Pokémon from the queue.', trigger: 'hover' }">
             Clear
         </button>
     </div>
@@ -55291,6 +55289,7 @@ aria-labelledby="AchievementsModalLabel" aria-hidden="true">
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('hideQuestsOnFull')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('confirmLeaveDungeon')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('confirmBeformeMulchingAllPlots')}"></tr>
+                                <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('breedingQueueClearConfirmation')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('disableRightClickMenu')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('catchFilters.initialEnabled')}"></tr>
                                 <tr data-bind="template: { name: 'BooleanSettingTemplate', data: Settings.getSetting('catchFilters.invertPriorityOrder')}"></tr>
@@ -56972,7 +56971,7 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                                                 <td class="text-left align-middle">Sort:</td>
                                                 <td class="text-center align-middle">
                                                     <div class="input-group input-group-sm">
-                                                        <select autocomplete="off" class="custom-select" data-bind="options: GameHelper.enumSelectOption(SortOptions).filter(o => o.value !== SortOptions.level), optionsValue: 'value', optionsText: i => SortOptionConfigs[i.value].text, value: $data.sortOption"></select>
+                                                        <select autocomplete="off" class="custom-select" data-bind="options: GameHelper.enumSelectOption(SortOptions).filter(o => ![SortOptions.level, SortOptions.attack].includes(o.value)), optionsValue: 'value', optionsText: i => SortOptionConfigs[i.value].text, value: $data.sortOption"></select>
                                                         <div class="input-group-append bg-primary text-light">
                                                             <label class="clickable m-0 px-2" style="font-size: 20px;" data-bind="
                                                                 attr: {for: 'hatcheryHelperSortDirection' + $index() },
