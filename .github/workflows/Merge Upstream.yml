@@ -1,0 +1,22 @@
+name: Merge Upstream
+
+on:
+  schedule:
+    - cron: '0 */24 * * *'
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: octokit/request-action@v2.x
+        id: merge_upstream
+        with:
+          route: POST /repos/{owner}/{repo}/merge-upstream
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          INPUT_OWNER: DreamNya
+          INPUT_REPO: pokeclicker
+          INPUT_BRANCH: develop
+      - name : Output Result 
+        run: echo 【RESULTS DATA】 '${{ steps.merge_upstream.outputs.data }}'
