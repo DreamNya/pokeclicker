@@ -1,9 +1,13 @@
-name: Node.js CI DreamNya test
+name: Deploy Stable
 
 on:
+  push:
+    branches: [ "stable" ]
+    paths:
+      - "src/**"
   workflow_dispatch: # on button click
 
-      
+
 jobs:
   build:
 
@@ -11,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -23,10 +27,11 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run website
-    
+
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: master
         folder: ./docs
-        target-folder: ./test
+        clean: true
+        clean-exclude: develop
