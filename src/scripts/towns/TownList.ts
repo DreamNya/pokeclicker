@@ -3993,7 +3993,6 @@ const SolaceonTownShop = new Shop([
     ItemList.Shiny_stone,
     ItemList.Dusk_stone,
     ItemList.Dawn_stone,
-    ItemList.Spiritomb,
 ]);
 const PastoriaShop = new Shop([
     ItemList.Pokeball,
@@ -7141,7 +7140,7 @@ const LillieSun = new NPC('Lillie', [
     'Traveling around Alola with you, learning all the things you knew... And seeing Nebby evolve into Solgaleo under that radiant sun... I\'ll never forget those precious memories, $playername$!',
     'You, Professor Kukui, Professor Burnet, Hau, Hapu, and everyone else... I\'m so glad I got to meet everyone!',
 ], {
-    image: 'Lillie (z powered)',
+    image: 'assets/images/npcs/Lillie (z powered).png',
     requirement: new MultiRequirement([new QuestLineStepCompletedRequirement('Eater of Light', 4), new StatisticRequirement(['npcTalkedTo', GameHelper.hash('SunFlute')], 1, 'Must have played the Sun Flute during Emissary of Light quest line')]),
 });
 const LillieMoon = new NPC('Lillie', [
@@ -7149,7 +7148,7 @@ const LillieMoon = new NPC('Lillie', [
     'Traveling around Alola with you, learning all the things you knew... And seeing Nebby evolve into Lunala under that brilliant moon... I\'ll never forget those precious memories, $playername$!',
     'You, Professor Kukui, Professor Burnet, Hau, Hapu, and everyone else... I\'m so glad I got to meet everyone!',
 ], {
-    image: 'Lillie (z powered)',
+    image: 'assets/images/npcs/Lillie (z powered).png',
     requirement: new MultiRequirement([new QuestLineStepCompletedRequirement('Eater of Light', 4), new StatisticRequirement(['npcTalkedTo', GameHelper.hash('MoonFlute')], 1, 'Must have played the Moon Flute during Emissary of Light quest line')]),
 });
 // Optional Story NPCs
