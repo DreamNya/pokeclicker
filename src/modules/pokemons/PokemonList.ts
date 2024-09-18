@@ -4155,7 +4155,7 @@ export const pokemonList = createPokemonArray(
             'specialDefense': 45,
             'speed': 70,
         },
-        'heldItem': { type: ItemType.underground, id: 'Hard Stone' },
+        'heldItem': { type: ItemType.underground, id: 'Ice Stone' },
     },
     {
         'id': 95.02,
@@ -15609,6 +15609,7 @@ export const pokemonList = createPokemonArray(
             'specialDefense': 75,
             'speed': 127,
         },
+        'heldItem': { type: ItemType.berry, id: BerryType.Lum },
         'gender': {
             'type': Genders.Genderless,
         },
