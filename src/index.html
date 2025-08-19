@@ -77,6 +77,11 @@
     </style>
 </head>
 <body class="no-select" data-bind="class: 'no-select ' + Settings.getSetting('theme').observableValue() + ' ' + Settings.getSetting('backgroundImage').observableValue(), attr : {'oncontextmenu' : 'return !' + Settings.getSetting('disableRightClickMenu').observableValue().toString() + ';'}">
+
+    <!--锅巴汉化 https://gityx.com/g8hh/hanhuazhong/238.html-->
+    <script src="libs/chs.js"></script>
+    <script src="libs/core.js"></script>
+
 @import "dynamicBackground.html"
 
 <div id="toaster" class="mw-100"></div>
