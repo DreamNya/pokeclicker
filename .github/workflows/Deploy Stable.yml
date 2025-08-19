@@ -1,0 +1,35 @@
+name: Deploy Stable
+
+on:
+  push:
+    branches: ["stable_master"]
+    paths:
+      - "src/**"
+  workflow_dispatch: # on button click
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run website
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: master
+          folder: ./docs
+          clean: true
+          clean-exclude: develop
