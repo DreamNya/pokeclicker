@@ -28,10 +28,16 @@ module.exports = {
     },
     proxy: false,
     port: 443,
-    https: true,
+    https: {
+        key: '../localDev/.certs/www.pokeclicker.com-key.pem',
+        cert: '../localDev/.certs/www.pokeclicker.com.pem',
+    },
     middleware: [
         function (req, res, next) {
-            res.setHeader('Cache-Control', `public, max-age=${req.url.endsWith('.js') ? 3600 : 86400}`);
+            res.setHeader(
+                'Cache-Control',
+                `public, max-age=${req.url.endsWith('.js') ? 3600 : 86400}`,
+            );
             next();
         },
     ],
@@ -66,7 +72,8 @@ module.exports = {
     localOnly: false,
     codeSync: false,
     timestamps: false,
-    clientEvents: [/*
+    clientEvents: [
+        /*
         'scroll',
         'scroll:element',
         'input:text',
@@ -74,7 +81,8 @@ module.exports = {
         'form:submit',
         'form:reset',
         'click',
-    */],
+    */
+    ],
     socket: {
         socketIoOptions: {
             log: false,
